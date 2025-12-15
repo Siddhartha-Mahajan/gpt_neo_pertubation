@@ -16,12 +16,12 @@ def _save_fig(fig, plots_dir: Path, name: str) -> Path:
 
 
 def plot_contributions_heatmap(df: pd.DataFrame, plots_dir: Path) -> Path:
+    df_idx = df.set_index("head").sort_index()
     contrib_df = pd.DataFrame(
         {
-            "Noise contribution": df["noise_contrib"],
-            "Zeroing contribution": df["zero_contrib"],
-        },
-        index=df["head"],
+            "Noise contribution": df_idx["noise_contrib"],
+            "Zeroing contribution": df_idx["zero_contrib"],
+        }
     )
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -42,13 +42,13 @@ def plot_contributions_heatmap(df: pd.DataFrame, plots_dir: Path) -> Path:
 
 
 def plot_accuracy_heatmap(df: pd.DataFrame, baseline_acc: float, plots_dir: Path) -> Path:
+    df_idx = df.set_index("head").sort_index()
     acc_df = pd.DataFrame(
         {
-            "Baseline": [baseline_acc] * len(df),
-            "Noise-perturbed": df["noise_mean_acc"],
-            "Zeroed": df["zero_acc"],
-        },
-        index=df["head"],
+            "Baseline": [baseline_acc] * len(df_idx),
+            "Noise-perturbed": df_idx["noise_mean_acc"],
+            "Zeroed": df_idx["zero_acc"],
+        }
     )
 
     fig, ax = plt.subplots(figsize=(9, 6))
@@ -68,7 +68,7 @@ def plot_accuracy_heatmap(df: pd.DataFrame, baseline_acc: float, plots_dir: Path
 
 
 def plot_noise_stats(df: pd.DataFrame, plots_dir: Path) -> Path:
-    df_idx = df.set_index("head")
+    df_idx = df.set_index("head").sort_index()
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 6), sharey=True, gridspec_kw={"width_ratios": [1, 1]})
 
     sns.heatmap(
