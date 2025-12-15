@@ -1,0 +1,42 @@
+2025-12-15 22:35:01 | INFO | Logging initialized. Writing to logs/run_20251215_223501.log
+2025-12-15 22:35:02 | INFO | Device: cuda
+2025-12-15 22:35:02 | INFO | Configuration: ExperimentConfig(dataset_path=PosixPath('IMDB_Dataset_100.csv'), output_csv=PosixPath('head_perturbation_outproj_results_v2.csv'), logs_dir=PosixPath('logs'), plots_dir=PosixPath('plots'), model_name='EleutherAI/gpt-neo-125M', seed=42, k_shot=4, max_test_examples=None, max_new_tokens=8, noise_eps=0.05, repeats=5, zeroing=True, target_cproj_name='attn.attention.out_proj', verbose=True)
+2025-12-15 22:35:02 | INFO | Loading dataset from IMDB_Dataset_100.csv
+2025-12-15 22:35:02 | INFO | Few-shot examples: 4 | Eval examples: 95
+2025-12-15 22:35:05 | INFO | Model EleutherAI/gpt-neo-125M | layers=12 heads=12 embed_dim=768 head_dim=64
+2025-12-15 22:35:05 | INFO | Running baseline evaluation (few-shot ICL)
+2025-12-15 22:35:12 | INFO | Baseline accuracy: 0.6421 (64.2%)
+2025-12-15 22:35:12 | INFO | Starting head perturbation experiment
+2025-12-15 22:35:12 | INFO | Using c_proj='attn.attention.out_proj' with shape=(768, 768)
+2025-12-15 22:35:12 | INFO | Running perturbation across 12 heads (noise_eps=0.0500, repeats=5, zeroing=True)
+2025-12-15 22:35:12 | INFO | Head 0/11
+2025-12-15 22:35:48 | INFO | Head 1/11
+2025-12-15 22:36:25 | INFO | Head 2/11
+2025-12-15 22:37:02 | INFO | Head 3/11
+2025-12-15 22:37:38 | INFO | Head 4/11
+2025-12-15 22:38:15 | INFO | Head 5/11
+2025-12-15 22:38:52 | INFO | Head 6/11
+2025-12-15 22:39:28 | INFO | Head 7/11
+2025-12-15 22:40:05 | INFO | Head 8/11
+2025-12-15 22:40:42 | INFO | Head 9/11
+2025-12-15 22:41:18 | INFO | Head 10/11
+2025-12-15 22:41:55 | INFO | Head 11/11
+2025-12-15 22:42:32 | INFO | Finished perturbations. Example top rows:
+   head  noise_mean_acc  noise_std_acc  noise_contrib  zero_acc  zero_contrib
+1    10        0.635789       0.009415   6.315809e-03  0.600000      0.042105
+2     2        0.642105       0.010526   4.140954e-08  0.610526      0.031579
+3     3        0.635790       0.005766   6.315750e-03  0.631579      0.010526
+4     1        0.635790       0.005766   6.315750e-03  0.631579      0.010526
+5     7        0.631579       0.000000   1.052634e-02  0.631579      0.010526
+2025-12-15 22:42:32 | INFO | Saved head contribution results to head_perturbation_outproj_results_v2.csv
+2025-12-15 22:42:32 | INFO | Creating plots
+2025-12-15 22:42:32 | INFO | Saved plot: plots/head_contribution_heatmap.png
+2025-12-15 22:42:32 | INFO | Saved plot: plots/head_accuracy_heatmap.png
+2025-12-15 22:42:32 | INFO | Saved plot: plots/noise_stats_heatmap.png
+2025-12-15 22:42:32 | INFO | Done. Top 5 heads by zeroing contribution:
+   head  noise_mean_acc  noise_std_acc  noise_contrib  zero_acc  zero_contrib
+1    10        0.635789       0.009415   6.315809e-03  0.600000      0.042105
+2     2        0.642105       0.010526   4.140954e-08  0.610526      0.031579
+3     3        0.635790       0.005766   6.315750e-03  0.631579      0.010526
+4     1        0.635790       0.005766   6.315750e-03  0.631579      0.010526
+5     7        0.631579       0.000000   1.052634e-02  0.631579      0.010526

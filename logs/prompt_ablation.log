@@ -1,0 +1,15 @@
+2025-12-15 23:27:28 | INFO | Logging initialized. Writing to logs/prompt_ablation.log
+2025-12-15 23:27:28 | INFO | Prompt ablation run with config: AblationConfig(dataset_path=PosixPath('IMDB_Dataset_100.csv'), output_csv=PosixPath('prompt_ablation/head_perturbation_outproj_results_ablation.csv'), logs_dir=PosixPath('logs'), plots_dir=PosixPath('plots'), model_name='EleutherAI/gpt-neo-125M', seed=42, k_shot=6, max_test_examples=None, max_new_tokens=4, noise_eps=0.05, repeats=5, zeroing=True, target_cproj_name='attn.attention.out_proj', verbose=True, instruction='You are a strict sentiment classifier. Given a review, respond with exactly one word: positive or negative.', delimiter='###', answer_format='Answer:')
+2025-12-15 23:27:29 | INFO | Few-shot=6 Eval=93
+2025-12-15 23:27:32 | INFO | Model=EleutherAI/gpt-neo-125M layers=12 heads=12 embed_dim=768 head_dim=64
+2025-12-15 23:27:57 | INFO | Logging initialized. Writing to logs/prompt_ablation.log
+2025-12-15 23:27:57 | INFO | Prompt ablation run with config: AblationConfig(dataset_path=PosixPath('IMDB_Dataset_100.csv'), output_csv=PosixPath('prompt_ablation/head_perturbation_outproj_results_ablation.csv'), logs_dir=PosixPath('logs'), plots_dir=PosixPath('plots'), model_name='EleutherAI/gpt-neo-125M', seed=42, k_shot=6, max_test_examples=None, max_new_tokens=4, noise_eps=0.05, repeats=2, zeroing=True, target_cproj_name='attn.attention.out_proj', verbose=True, instruction='You are a strict sentiment classifier. Given a review, respond with exactly one word: positive or negative.', delimiter='###', answer_format='Answer:')
+2025-12-15 23:27:57 | INFO | Few-shot=6 Eval=93
+2025-12-15 23:28:01 | INFO | Model=EleutherAI/gpt-neo-125M layers=12 heads=12 embed_dim=768 head_dim=64
+2025-12-15 23:28:07 | INFO | Baseline (prompt ablation) accuracy: 0.4086 (40.9%)
+2025-12-15 23:28:07 | INFO | Using c_proj='attn.attention.out_proj' with shape=(768, 768)
+2025-12-15 23:28:07 | INFO | Prompt-ablation sweep across 12 heads (noise_eps=0.0500, repeats=2, zeroing=True)
+2025-12-15 23:28:07 | INFO | Head 0/11
+2025-12-15 23:28:23 | INFO | Head 1/11
+2025-12-15 23:28:40 | INFO | Head 2/11
+2025-12-15 23:28:57 | INFO | Head 3/11
