@@ -58,6 +58,38 @@ python generate_plots_from_csv.py --csv head_perturbation_outproj_results_v2.csv
 
 Use `--baseline <value>` to override the inferred baseline if needed.
 
+## Prompt ablation (stronger prompt, separate harness)
+
+A separate, non-intrusive harness lives in `prompt_ablation/` and does not modify the original pipeline. It uses a more explicit instruction prompt, balanced k-shot, and shorter label decoding.
+
+Run it end-to-end:
+
+```bash
+python -m prompt_ablation.main
+```
+
+Outputs:
+
+- Logs: `logs/prompt_ablation.log`
+- Results CSV: `prompt_ablation/head_perturbation_outproj_results_ablation.csv`
+
+Key prompt format:
+
+```
+You are a strict sentiment classifier. Given a review, respond with exactly one word: positive or negative.
+### Example 1
+Review: ...
+Sentiment: positive
+... (few-shot examples)
+### Test Example
+Review: <test review>
+Answer:
+```
+
+The ablation pipeline recomputes the baseline with this prompt before running perturbations.
+
+Status note (Dec 15 2025): The prompt-ablation variant yielded a lower baseline (≈0.41) and was halted mid-perturbation sweep (see `prompt_ablation/inference.md` and `logs/prompt_ablation.log`). The original harness remains recommended.
+
 ## Configuration knobs (edit `config.py`)
 
 - `model_name`: Hugging Face identifier (default GPT-Neo 125M).
